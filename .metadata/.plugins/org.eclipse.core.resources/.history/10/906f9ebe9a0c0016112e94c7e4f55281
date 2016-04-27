@@ -1,0 +1,61 @@
+<div data-role="page" data-url="<%= Rho::Application.startURI %>/">
+    
+  <div data-role="header" data-position="inline">
+    <h1>RhoMobileApplication1</h1>
+    
+  </div>
+</div>
+
+
+      <div data-role="content">
+        <form id="signup">
+          <input type="text" id="user1" name="user" required placeHolder="Usuario">
+          <input type="email" id="mail1" required placeHolder="Correo Electronico">
+          <input type="password" id="pass1" required placeHolder="******">
+          <input type="submit" id="sign_up" value="Registrate">
+        </form>
+      
+      
+      </div>  
+      
+      <div data-role="content">
+        <form id="login">
+          <input type="text" id="user2" name="user" required placeHolder="Usuario">
+          <input type="email" id="mail2" required placeHolder="Correo Electronico">
+          <input type="password" id="pass2" required placeHolder="******">
+          <input type="submit" id="log_in" value="Ingresar">
+        </form>
+      
+      
+      </div>
+    
+      <h1 id="user"></h1>
+      <script>
+        $("#signup").submit(function(){
+          var user = $("#user1").val();
+          var mail = $("#mail1").val();
+          var pass = $("#pass1").val();
+          $("user").html(user);
+          $.getJSON("http://rhodes.esy.es/signup.php?+user+"+user+"&mail="+mail+"&pass="+pass).done;
+          if(json.status=="success"){
+      
+          }
+        });
+        </script>  
+          
+        <script>
+            
+        $("#login").submit(function(){
+          var user = $("#user2").val();
+          var mail = $("#mail2").val();
+          var pass = $("#pass2").val();
+          $("user").html(user);
+          $.getJSON("http://rhodes.esy.es/login.php?+user+"+user+"&mail="+mail+"&pass="+pass).done;
+          if(json.status=="success"){
+      
+          }
+            return false;
+        });
+            
+        
+      </script>
